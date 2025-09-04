@@ -8,24 +8,24 @@
       <div class="form__wrapper">
         <span class="form__name">Регистрация</span>
         <div class="form__inner">
-          <IconMail class="form__inner-icon"/>
           <input class="form__inner-input" type="email" placeholder="Электронная почта" required>
+          <IconMail class="form__inner-icon"/>
         </div>
         <div class="form__inner">
-          <IconName class="form__inner-icon"/>
           <input class="form__inner-input" type="text" placeholder="Имя" autocomplete="username" required>
-        </div>
-        <div class="form__inner">
           <IconName class="form__inner-icon"/>
+        </div>
+        <div class="form__inner">
           <input class="form__inner-input" type="text" placeholder="Фамилия" autocomplete="username" required>
+          <IconName class="form__inner-icon"/>
         </div>
         <div class="form__inner">
-          <IconPassword class="form__inner-icon"/>
           <input class="form__inner-input" type="password" placeholder="Пароль" autocomplete="new-password" required>
+          <IconPassword class="form__inner-icon"/>
         </div>
         <div class="form__inner">
-          <IconPassword class="form__inner-icon"/>
           <input class="form__inner-input" type="password" placeholder="Подтвердите пароль" autocomplete="new-password" required>
+          <IconPassword class="form__inner-icon"/>
         </div>
         <Button>Создать акканту</Button>
         <NuxtLink class="form__exists" to="/">У меня есть пароль</NuxtLink>
@@ -105,7 +105,14 @@ import { ref } from 'vue';
       line-height: 24px;
       font-weight: 400;
       &:placeholder-shown:not(:focus):invalid {
-        border: 1px solid red;
+        outline: 1px solid #FF7575;
+
+        ~ .form__inner-icon {
+          :deep(path) {
+            fill: #FF7575;
+            fill-opacity: 1;
+          }
+        }
       }
     }
     &-icon {
