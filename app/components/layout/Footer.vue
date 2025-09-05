@@ -4,16 +4,16 @@
       <div class="footer__wrapper">
         <ul class="footer__list">
           <li class="footer__item">
-              <IconVk />
+              <IconVk class="footer__item-icon"/>
           </li>
           <li class="footer__item">
-              <IconYoutube />
+              <IconYoutube class="footer__item-icon"/>
           </li>
           <li class="footer__item">
-              <IconOk />
+              <IconOk class="footer__item-icon"/>
           </li>
           <li class="footer__item">
-              <IconTelegram />
+              <IconTelegram class="footer__item-icon"/>
           </li>
         </ul>
       </div>
@@ -34,6 +34,9 @@ import IconTelegram from '~/assets/icons/IconTelegram.svg';
   &__wrapper {
     display: flex;
     justify-content: flex-end;
+    @include vp-767 {
+      justify-content: flex-start;
+    }
   }
   
   &__list {
@@ -43,5 +46,18 @@ import IconTelegram from '~/assets/icons/IconTelegram.svg';
       cursor: pointer;
     }
   }
+  &__item {
+    display: flex;
+    
+    &-icon {
+      width: 36px;
+      height: 36px;
+    @include vp-767 {
+      width: 24px;
+      height: 24px;
+      }
+    }
+  }
+  
 }
 </style>

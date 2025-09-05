@@ -50,16 +50,16 @@ import Button from './Button.vue';
 .registration {
   background-color: #FFFFFF;
   border-radius: 24px;
-  padding: 24px 20px 32px;
+  padding: 24px 40px 32px;
   display: flex;
   flex-direction: column;
-  max-width: 335px;
+  max-width: 420px;
   position: relative;
 
   &__close {
     position: absolute;
     content: "";
-    right: -20%;
+    right: -15%;
     top: 0;
     padding: 15px;
     background-color: #FFFFFF;
@@ -68,13 +68,22 @@ import Button from './Button.vue';
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    @include vp-767 {
+        position: relative;
+        background-color: unset;
+        right: -8%;
+        top: -20px;
+        border-radius: unset;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
   }
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:center;
   &__icon {
     margin: 0 0 28px;
   }
@@ -111,6 +120,8 @@ import Button from './Button.vue';
       font-size: 18px;
       line-height: 24px;
       font-weight: 400;
+      min-width: 340px;
+      max-height: 56px;
       &:placeholder-shown:not(:focus):invalid {
         outline: 1px solid #FF7575;
 

@@ -36,7 +36,7 @@ import Button from './Button.vue';
   padding: 24px 20px 32px;
   display: flex;
   flex-direction: column;
-  max-width: 335px;
+  max-width: 420px;
   position: relative;
   max-height: 420px;
 
@@ -52,6 +52,15 @@ import Button from './Button.vue';
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    @include vp-767 {
+        position: absolute;
+        background-color: unset;
+        right: 5%;
+        top: 0px;
+        border-radius: unset;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
   }
 }
 
@@ -105,6 +114,8 @@ import Button from './Button.vue';
       font-size: 18px;
       line-height: 24px;
       font-weight: 400;
+      max-width: 340px;
+      max-height: 56px;
 
       &:placeholder-shown:not(:focus):invalid {
         outline: 1px solid #FF7575;

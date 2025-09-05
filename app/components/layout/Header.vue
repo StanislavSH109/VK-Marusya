@@ -49,14 +49,32 @@ import IconSearch from '~/assets/icons/IconSearch.svg';
     display: flex;
     gap: 80px;
     align-items: center;
+    @media (max-width: 1320px) {
+      gap: 20px;
+    }
+
+    @include vp-1023 {
+      gap: 50px;
+    }
+
+    @media (max-width: 900px) {
+      gap: 20px;
+    }
   }
   &__icon {
     cursor: pointer;
     color: #FFFFFF;
+    @include vp-767 {
+      width: 80px;
+      height: 19px;
+    }
   }
   &__nav {
     display: flex;
     align-items: self-start;
+    @include vp-767 {
+      display: none;
+    }
     &-list {
       display: flex;
       gap: 40px;
@@ -66,6 +84,10 @@ import IconSearch from '~/assets/icons/IconSearch.svg';
       line-height: 32px;
       font-weight: 400;
       padding: 9px 0 0;
+      @media (max-width:860px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
     &-link {
       position: relative;
@@ -91,7 +113,7 @@ import IconSearch from '~/assets/icons/IconSearch.svg';
       position: relative;
     }
     &-input {
-      width: 658px;
+      min-width: 658px;
       height: 48px;
       border-radius: 8px;
       background-color: rgba(57, 59, 60, 1);
@@ -101,6 +123,16 @@ import IconSearch from '~/assets/icons/IconSearch.svg';
       padding-left: 54px;
       &::placeholder {
         letter-spacing: 0.04em;
+      }
+      @media (max-width: 1200px) {
+        min-width: 600px;
+      }
+
+      @media (max-width: 1140px) {
+        min-width: 470px;
+      }
+      @include vp-1023 {
+        min-width: 300px;
       }
     }
     &-icon {
@@ -120,6 +152,13 @@ import IconSearch from '~/assets/icons/IconSearch.svg';
         cursor: pointer;
         line-height: 32px;
         padding: 0 10px 0 0;
+        @media (max-width:860px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      @include vp-767 {
+        display: none;
+      }
       }
     }
   }

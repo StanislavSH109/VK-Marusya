@@ -3,9 +3,19 @@ import svgLoader from 'vite-svg-loader';
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ['@/assets/scss/style.scss'],
+  css: ['~/assets/scss/style.scss'],
   vite: {
-    plugins: [svgLoader()],
+    plugins: 
+      [
+        svgLoader(),
+      ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/global/mixins.scss" as *;',
+        }
+      }
+    }
   },
   modules: [
     '@nuxt/eslint',

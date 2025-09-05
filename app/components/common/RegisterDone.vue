@@ -26,12 +26,12 @@ import Button from './Button.vue';
 .registration {
   background-color: #FFFFFF;
   border-radius: 24px;
-  padding: 60px 40px 64px;
+  padding: 60px 20px 64px;
   display: flex;
   flex-direction: column;
   max-width: 420px;
   position: relative;
-  max-height: 381px;
+  max-height: 335px;
 
   &__close {
     position: absolute;
@@ -45,6 +45,15 @@ import Button from './Button.vue';
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    @include vp-767 {
+        position: absolute;
+        background-color: unset;
+        right: 5%;
+        top: 0px;
+        border-radius: unset;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
   }
 
   &__inner {
