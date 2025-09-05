@@ -18,6 +18,10 @@ import LoginModal from '~/components/common/LoginModal.vue';
 .wrapper {
   display: flex;
   gap: 100px;
+  @include vp-767 {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 </style>
 
