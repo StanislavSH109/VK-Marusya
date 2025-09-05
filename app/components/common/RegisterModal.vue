@@ -27,7 +27,7 @@
           <input class="form__inner-input" type="password" placeholder="Подтвердите пароль" autocomplete="new-password" required>
           <IconPassword class="form__inner-icon"/>
         </div>
-        <Button>Создать акканту</Button>
+        <Button>Создать аккаунт</Button>
         <NuxtLink class="form__exists" to="/">У меня есть пароль</NuxtLink>
       </div>
     </form>
@@ -41,7 +41,7 @@ import IconName from '~/assets/icons/IconName.svg';
 import IconPassword from '~/assets/icons/IconPassword.svg';
 import IconClose from '~/assets/icons/IconClose.svg';
 import Button from './Button.vue';
-import { ref } from 'vue';
+// import { ref } from 'vue';
 
 
 </script>
@@ -54,12 +54,19 @@ import { ref } from 'vue';
   display: flex;
   flex-direction: column;
   max-width: 335px;
+  position: relative;
 
   &__close {
+    position: absolute;
+    content: "";
+    right: -20%;
+    top: 0;
+    padding: 15px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    margin: 0 0 8px;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
   }
 }
@@ -99,8 +106,8 @@ import { ref } from 'vue';
     &-input {
       padding: 16px 52px;
       border-radius: 8px;
-      outline: none;
-      border: 1px solid #00000066;
+      border: none;
+      outline: 1px solid #00000066;
       font-size: 18px;
       line-height: 24px;
       font-weight: 400;

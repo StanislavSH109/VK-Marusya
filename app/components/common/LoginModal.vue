@@ -37,12 +37,20 @@ import Button from './Button.vue';
   display: flex;
   flex-direction: column;
   max-width: 335px;
+  position: relative;
+  max-height: 420px;
 
   &__close {
+    position: absolute;
+    content: "";
+    right: -20%;
+    top: 0;
+    padding: 15px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    margin: 0 0 8px;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
   }
 }
