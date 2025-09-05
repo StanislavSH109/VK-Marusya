@@ -1,24 +1,20 @@
 <template>
   <div class="container">
-    <div class="wrapper">
-      <h2>Film</h2>
-    </div>
+    <h2>Film</h2>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
+const topFilms = ref('');
+
+
 
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  display: flex;
-  gap: 100px;
-  @include vp-767 {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
+
 </style>
 
 

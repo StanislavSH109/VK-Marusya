@@ -32,6 +32,25 @@
         <div class="header__nav-auth">
           <button class="header__nav-auth-btn">Войти</button>
         </div>
+        <div class="header__mobile">
+          <ul class="header__mobile-list">
+            <li class="header__mobile-item">
+              <button class="header__mobile-btn" type="button">
+                <IconGenres />
+              </button>
+            </li>
+            <li class="header__mobile-item">
+              <button class="header__mobile-btn" type="button">
+                <IconSearch />
+              </button>
+            </li>
+            <li class="header__mobile-item">
+              <button class="header__mobile-btn" type="button">
+                <IconAuth />
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
@@ -40,6 +59,8 @@
 <script setup>
 import IconMarusya from '~/assets/icons/IconMarusya.svg';
 import IconSearch from '~/assets/icons/IconSearch.svg';
+import IconAuth from '~/assets/icons/IconAuth.svg';
+import IconGenres from '~/assets/icons/IconGenres.svg';
 </script>
 
 <style lang="scss" scoped>
@@ -51,6 +72,10 @@ import IconSearch from '~/assets/icons/IconSearch.svg';
     align-items: center;
     @media (max-width: 861px) {
       gap: 20px;
+    }
+
+    @include vp-767 {
+      justify-content: space-between;
     }
   }
   &__icon {
@@ -148,6 +173,22 @@ import IconSearch from '~/assets/icons/IconSearch.svg';
         display: none;
       }
       }
+    }
+  }
+  &__mobile {
+    display: none;
+    @include vp-767 {
+      display: flex;
+    }
+    &-list {
+      display: flex;
+      gap: 22px;
+    }
+    &-btn {
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 2px;
     }
   }
 }
