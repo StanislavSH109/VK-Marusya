@@ -1,16 +1,11 @@
 <template>
   <div class="container">
-    <h2>Film</h2>
+    <RandomMovie />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const topFilms = ref('');
-
-
-
+import RandomMovie from '~/components/dashboard/RandomMovie.vue';
 </script>
 
 <style lang="scss" scoped>
