@@ -111,6 +111,11 @@ import IconGenres from '~/assets/icons/IconGenres.svg';
       position: relative;
       color: #FFFFFF;
       padding: 8px 0 0;
+      transition: color .3s ease-in-out;
+      &:hover, &:focus {
+        color: #B4A9FF;
+        outline: none;
+      }
       &::before {
           position: absolute;
           content: "";
@@ -165,6 +170,11 @@ import IconGenres from '~/assets/icons/IconGenres.svg';
         cursor: pointer;
         line-height: 32px;
         padding: 0 10px 0 0;
+        transition: color .3s ease-in-out;
+        &:hover, &:focus {
+          color: #B4A9FF;
+          outline: none;
+       }
         @media (max-width:860px) {
         font-size: 16px;
         line-height: 24px;
