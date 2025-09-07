@@ -66,6 +66,7 @@ import IconGenres from '~/assets/icons/IconGenres.svg';
 <style lang="scss" scoped>
 .header {
   padding: 24px 0 32px;
+  margin: 0 0 32px;
   &__wrapper {
     display: flex;
     gap: 80px;

@@ -8,4 +8,5 @@ export interface Movie {
   plot: string;
   status: string;
   tmdbRating: number;
+  language: string;
 }

@@ -30,7 +30,7 @@ import IconTelegram from '~/assets/icons/IconTelegram.svg';
 
 <style lang="scss" scoped>
 .footer {
-  padding: 0 0 42px;
+  padding: 120px 0 42px;
   &__wrapper {
     display: flex;
     justify-content: flex-end;

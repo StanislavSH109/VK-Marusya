@@ -8,24 +8,24 @@
           <div class="movie__items">
             <IconStar class="movie__items-icon"/>
             <span class="movie__items-rating">
-              {{ randomMovie?.tmdbRating }}
+              {{ randomMovie?.tmdbRating.toFixed(1) }}
             </span>
           </div>
           <span class="movie__info-year">
             {{ randomMovie?.releaseYear }}
           </span>
           <span class="movie__info-genre">
-            {{ randomMovie?.genres }}
+            {{ randomMovie?.genres[0] }}
           </span>
           <span class="movie__info-time">
-            {{ randomMovie?.runtime }}
+            {{ formattedTime }}
           </span>
         </div>
         <h2 class="movie__title">{{ randomMovie?.title }}</h2>
         <p class="movie__description">{{ randomMovie?.plot }}</p>
         <div class="movie__buttons">
           <Button>Трейлер</Button>
-          <Button>О фильме</Button>
+          <ButtonAbout>О фильме</ButtonAbout>
           <ButtonLike />
           <ButtonRefresh />
         </div>
@@ -41,13 +41,36 @@ import { useAsyncData } from '#app';
 import Button from '../common/Button.vue';
 import ButtonLike from '../common/ButtonLike.vue';
 import ButtonRefresh from '../common/ButtonRefresh.vue';
+import ButtonAbout from '../common/ButtonAbout.vue';
 import IconStar from '~/assets/icons/IconStar.svg';
 
 const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
   'randomMovie',
-  () => $fetch('https://cinemaguide.skillbox.cc/movie/random')
+  async () => {
+    let movie: Movie | null = null;
+    let attempts = 0;
+    while(!movie || movie.language !== 'ru' && attempts > 20) {
+      movie = await $fetch<Movie>('https://cinemaguide.skillbox.cc/movie/random');
+      attempts++;
+    }
+    return movie;
+  }
+  
 )
 
+
+const duringTimeFilm = randomMovie.value;
+const formattedTime = computed(() => {
+  const totalMinutes = duringTimeFilm?.runtime ?? 0;
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  return `${hours > 0 ? hours + 'ч' : ''} ${minutes} мин`; 
+})
+
+// const rating = computed(() => {
+//   return Math.round(randomMovie?.value?.tmdbRating, 2)
+// })
 
 
 </script>
@@ -55,9 +78,25 @@ const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
 <style lang="scss" scoped>
 .movie {
   display: flex;
+  margin: 0 0 40px;
+  
 
   &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    @include vp-767 {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__inner {
     display: flex;
+    flex-direction: column;
+    max-width: 600px;
   }
 
   &__info {
@@ -69,6 +108,10 @@ const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
       font-size: 18px;
       line-height: 24px;
       font-weight: 400;
+      @include vp-767 {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
   }
 
@@ -85,7 +128,14 @@ const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
     }
     &-rating {
       color: #FFFFFF;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 700;
     }
+  }
+
+  &__info {
+    margin: 0 0 20px;
   }
 
   &__title {
@@ -93,6 +143,11 @@ const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
     line-height: 56px;
     font-weight: 700;
     color: #FFFFFF;
+    margin: 0 0 16px;
+    @include vp-767 {
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
 
   &__description {
@@ -102,13 +157,26 @@ const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
     overflow: hidden;
     text-overflow: ellipsis;
     color: #FFFFFFB2;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #FFFFFFB2;
+    margin: 0 0 60px;
+    @include vp-767 {
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
 
   &__buttons {
     display: flex;
+    gap: 16px;
+    max-height: 56px;
   }
   &__image {
-    display: flex;
+    max-width: 660px;
+    border-radius: 16px;
+    height: 550px;
   }
 
 }
