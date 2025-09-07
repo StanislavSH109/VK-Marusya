@@ -68,10 +68,6 @@ const formattedTime = computed(() => {
   return `${hours > 0 ? hours + 'ч' : ''} ${minutes} мин`; 
 })
 
-// const rating = computed(() => {
-//   return Math.round(randomMovie?.value?.tmdbRating, 2)
-// })
-
 
 </script>
 
