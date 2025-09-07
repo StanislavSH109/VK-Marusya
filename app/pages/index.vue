@@ -1,17 +1,13 @@
 <template>
   <div class="container">
-    <!-- <RandomMovie /> -->
-    <ButtonLike />
+    <RandomMovie />
   </div>
 </template>
 
 <script setup lang="ts">
-// import RandomMovie from '~/components/dashboard/RandomMovie.vue';
-import ButtonLike from '~/components/common/ButtonLike.vue';
+import RandomMovie from '~/components/dashboard/RandomMovie.vue';
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
 
 

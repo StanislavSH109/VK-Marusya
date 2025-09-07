@@ -7,4 +7,5 @@ export interface Movie {
   posterUrl: string;
   plot: string;
   status: string;
+  tmdbRating: number;
 }

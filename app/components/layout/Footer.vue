@@ -52,6 +52,13 @@ import IconTelegram from '~/assets/icons/IconTelegram.svg';
     &-icon {
       width: 36px;
       height: 36px;
+      color: white;
+      cursor: pointer;
+      transition: color .3s ease-in-out;
+      &:hover, &:focus {
+        color: #B4A9FF;
+        outline: none;
+      }
     @include vp-767 {
       width: 24px;
       height: 24px;

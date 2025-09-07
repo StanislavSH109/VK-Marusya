@@ -19,7 +19,7 @@
   line-height: 24px;
   font-weight: 700;
   cursor: pointer;
-  min-width: 100%;
+  width: 100%;
   padding: 16px 80px;
   border-radius: 28px;
   transition: background-color .3s ease-in-out, color .3s ease-in-out;
