@@ -67,6 +67,10 @@ import IconGenres from '~/assets/icons/IconGenres.svg';
 .header {
   padding: 24px 0 32px;
   margin: 0 0 32px;
+  @include vp-767 {
+    margin: 0;
+    padding: 24px 0 16px;
+  }
   &__wrapper {
     display: flex;
     gap: 80px;

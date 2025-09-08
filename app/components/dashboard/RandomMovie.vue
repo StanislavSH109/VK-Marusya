@@ -24,13 +24,13 @@
         <h2 class="movie__title">{{ randomMovie?.title }}</h2>
         <p class="movie__description">{{ randomMovie?.plot }}</p>
         <div class="movie__buttons">
-          <Button>Трейлер</Button>
-          <ButtonAbout>О фильме</ButtonAbout>
+          <Button class="movie__button">Трейлер</Button>
+          <ButtonAbout class="movie__button">О фильме</ButtonAbout>
           <ButtonLike />
           <ButtonRefresh />
         </div>
       </div>
-      <img :src="randomMovie?.posterUrl || '/'" class="movie__image" alt="Постер фильма">
+      <div class="movie__image" :style="{backgroundImage: `url(${randomMovie?.posterUrl})`}"></div>
     </div>
   </section>
 </template>
@@ -46,16 +46,7 @@ import IconStar from '~/assets/icons/IconStar.svg';
 
 const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
   'randomMovie',
-  async () => {
-    let movie: Movie | null = null;
-    let attempts = 0;
-    while(!movie || movie.language !== 'ru' && attempts > 20) {
-      movie = await $fetch<Movie>('https://cinemaguide.skillbox.cc/movie/random');
-      attempts++;
-    }
-    return movie;
-  }
-  
+  () => $fetch('https://cinemaguide.skillbox.cc/movie/random')
 )
 
 
@@ -79,7 +70,7 @@ const formattedTime = computed(() => {
 
   &__wrapper {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: 600px 1fr;
     justify-content: space-between;
     gap: 20px;
     width: 100%;
@@ -92,7 +83,6 @@ const formattedTime = computed(() => {
   &__inner {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
   }
 
   &__info {
@@ -116,6 +106,7 @@ const formattedTime = computed(() => {
     gap: 5px;
     background-color: green;
     padding: 4px 12px;
+    align-items: center;
     border-radius: 16px;
     &-icon {
       width: 15px;
@@ -148,7 +139,7 @@ const formattedTime = computed(() => {
 
   &__description {
     display: --webkit-box;
-    --webkit-line-clamp: 3;
+    --webkit-line-clamp: 2;
     --webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -161,18 +152,43 @@ const formattedTime = computed(() => {
     @include vp-767 {
       font-size: 18px;
       line-height: 24px;
+      margin: 0 0 32px;
     }
   }
 
   &__buttons {
     display: flex;
     gap: 16px;
-    max-height: 56px;
+    // max-height: 56px;
+    @include vp-767 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto 56px;
+      max-height: unset;
+      & > :first-child {
+        grid-column:  1 / -1;
+        grid-row: 1;
+      }
+    }
+  }
+  &__button {
+    padding: 16px 48px;
+    @include vp-767 {
+      padding: 16px 40px;
+    }
   }
   &__image {
-    max-width: 660px;
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
-    height: 550px;
+    background-size: cover;
+    background-position: 60% 40%;
+    @include vp-767 {
+      height: 234px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 80% 20%;
+    }
   }
 
 }

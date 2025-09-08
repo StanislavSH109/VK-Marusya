@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>id genres</p>
+  <div class="container">
+    <p>Genre</p>
   </div>
 </template>
 

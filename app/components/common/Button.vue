@@ -10,6 +10,7 @@
 .btn {
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   border: none;
   outline: none;
@@ -19,10 +20,9 @@
   line-height: 24px;
   font-weight: 700;
   cursor: pointer;
-  width: 100%;
-  // padding: 16px 80px;
   border-radius: 28px;
   transition: background-color .3s ease-in-out, color .3s ease-in-out;
+  text-align: center;
   &:hover,&:focus {
     background-color: #67A5EB;
     color: rgba(255, 255, 255, 1);

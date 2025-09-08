@@ -8,9 +8,10 @@
 
 <style lang="scss" scoped>
 .btn-about {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   border: none;
   outline: none;
   background-color: #00000066;
@@ -19,8 +20,6 @@
   line-height: 24px;
   font-weight: 700;
   cursor: pointer;
-  width: 100%;
-  // padding: 16px 80px;
   border-radius: 28px;
   transition: background-color .3s ease-in-out, color .3s ease-in-out;
   &:hover,&:focus {
