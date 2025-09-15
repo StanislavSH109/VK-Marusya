@@ -5,6 +5,7 @@ export interface Movie {
   genres: string[];
   runtime: number;
   posterUrl: string;
+  backdropUrl: string;
   plot: string;
   status: string;
   tmdbRating: number;

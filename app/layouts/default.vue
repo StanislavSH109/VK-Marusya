@@ -15,8 +15,22 @@ import Footer from '~/components/layout/Footer.vue';
 
 <style lang="scss" scope>
 .page {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  &--auth {
+    &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 10;
+  }
+  }
 }
 </style>

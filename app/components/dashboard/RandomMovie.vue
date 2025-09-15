@@ -27,7 +27,9 @@
           <Button class="movie__button">Трейлер</Button>
           <ButtonAbout class="movie__button">О фильме</ButtonAbout>
           <ButtonLike />
-          <ButtonRefresh />
+          <ButtonRefresh 
+            @click="refresh"
+          />
         </div>
       </div>
       <div class="movie__image" :style="{backgroundImage: `url(${randomMovie?.posterUrl})`}"></div>
@@ -44,7 +46,7 @@ import ButtonRefresh from '../common/ButtonRefresh.vue';
 import ButtonAbout from '../common/ButtonAbout.vue';
 import IconStar from '~/assets/icons/IconStar.svg';
 
-const { data: randomMovie, pending, error } = await useAsyncData<Movie>(
+const { data: randomMovie, pending, error, refresh } = await useAsyncData<Movie>(
   'randomMovie',
   () => $fetch('https://cinemaguide.skillbox.cc/movie/random')
 )
@@ -77,6 +79,12 @@ const formattedTime = computed(() => {
     @include vp-767 {
       display: flex;
       flex-direction: column-reverse;
+    }
+
+    &-loader {
+      font-size: 24px;
+      line-height: 36px;
+      color: #FFFFFF;
     }
   }
 

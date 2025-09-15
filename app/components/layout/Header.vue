@@ -45,7 +45,9 @@
               </button>
             </li>
             <li class="header__mobile-item">
-              <button class="header__mobile-btn" type="button">
+              <button
+                class="header__mobile-btn"
+                type="button">
                 <IconAuth />
               </button>
             </li>

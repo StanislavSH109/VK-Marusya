@@ -10,6 +10,8 @@ import RandomMovie from '~/components/dashboard/RandomMovie.vue';
 import TopMovies from '~/components/dashboard/TopMovies.vue';
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
 
 

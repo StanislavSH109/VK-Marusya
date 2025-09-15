@@ -6,7 +6,7 @@
       <div v-else-if="error" class="topten__error">{{ error.message }}</div>
       <div v-else class="topten__inner">
         <ul class="topten__list">
-          <li  v-for="(film, index) in topTen" :key="film?.id"  class="topten__items">
+          <li  v-for="(film, index) in topTen?.filter(f => f.posterUrl)" :key="film?.id"  class="topten__items">
             <span class="topten__items-place">{{ index + 1 }}</span>
             <img :src="film?.posterUrl" alt="Постер фильма" class="topten__items-image">
           </li>
@@ -20,9 +20,19 @@
 import type { Movie } from '~/types/movie';
 import { useAsyncData } from '#app';
 
+
 const {data: topTen, pending, error} = await useAsyncData<Movie[]>(
   'topTen',
-  () => $fetch('https://cinemaguide.skillbox.cc/movie/top10')
+   async () => {
+    let films: Movie[] = [];
+    while(films.length < 10) {
+      const response = await $fetch<Movie[]>('https://cinemaguide.skillbox.cc/movie/top10');
+      films = [...films, ...response.filter(f => f.posterUrl)];
+      films = films.slice(0, 10);
+    }
+    return films;
+   }
+  
 )
 </script>
 
