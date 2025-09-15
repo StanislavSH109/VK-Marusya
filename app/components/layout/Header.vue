@@ -30,7 +30,10 @@
           </ul>
         </nav>
         <div class="header__nav-auth">
-          <button class="header__nav-auth-btn">Войти</button>
+          <button
+          class="header__nav-auth-btn"
+          @click="openAuth" 
+          >Войти</button>
         </div>
         <div class="header__mobile">
           <ul class="header__mobile-list">
@@ -63,6 +66,12 @@ import IconMarusya from '~/assets/icons/IconMarusya.svg';
 import IconSearch from '~/assets/icons/IconSearch.svg';
 import IconAuth from '~/assets/icons/IconAuth.svg';
 import IconGenres from '~/assets/icons/IconGenres.svg';
+
+const authModal = useState('authModal', () => false);
+
+const openAuth = () => {
+  authModal.value = true;
+}
 </script>
 
 <style lang="scss" scoped>
