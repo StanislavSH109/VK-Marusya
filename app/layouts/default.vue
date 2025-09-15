@@ -1,16 +1,20 @@
 <template>
-  <div class="page">
+  <div class="page" :class="{'page--auth': authModal}">
     <Header />
       <main>
         <NuxtPage />
       </main>
     <Footer />
+    <LoginModal v-if="authModal"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import Header from '~/components/layout/Header.vue';
 import Footer from '~/components/layout/Footer.vue';
+import LoginModal from '~/components/common/LoginModal.vue';
+
+const authModal = useState('authModal', () => false);
 </script>
 
 <style lang="scss" scope>
@@ -30,6 +34,7 @@ import Footer from '~/components/layout/Footer.vue';
     background-color: black;
     opacity: 0.5;
     z-index: 10;
+    overflow: hidden;
   }
   }
 }

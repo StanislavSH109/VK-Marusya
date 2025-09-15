@@ -31,14 +31,21 @@ import Button from './Button.vue';
 
 <style lang="scss" scoped>
 .registration {
+  position: fixed;
+  inset: 0;
+  // content: "";
+  top: 35%;
+  left: 40%;
   background-color: #FFFFFF;
   border-radius: 24px;
   padding: 24px 20px 32px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   max-width: 420px;
-  position: relative;
   max-height: 420px;
+  z-index: 15;
 
   &__close {
     position: absolute;
