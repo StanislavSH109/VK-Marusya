@@ -1,6 +1,6 @@
 <template>
   <div class="registration">
-    <div class="registration__close">
+    <div class="registration__close" @click="authModal = false">
       <IconClose class="registration__close-icon"/>
     </div>
     <form class="form" action="#" @submit.prevent>
@@ -14,7 +14,9 @@
           <input class="form__inner-input" type="password" placeholder="Пароль" autocomplete="new-password" required>
           <IconPassword class="form__inner-icon"/>
         </div>
-        <Button>Войти</Button>
+        <NuxtLink class="form__link">
+          <Button class="form__link-enter">Войти</Button>
+        </NuxtLink>
         <NuxtLink class="form__exists" to="/">Регистрация</NuxtLink>
       </div>
     </form>
@@ -27,24 +29,26 @@ import IconMail from '~/assets/icons/IconMail.svg';
 import IconPassword from '~/assets/icons/IconPassword.svg';
 import IconClose from '~/assets/icons/IconClose.svg';
 import Button from './Button.vue';
+
+const authModal = useState('authModal', () => false);
 </script>
 
 <style lang="scss" scoped>
 .registration {
   position: fixed;
-  inset: 0;
-  // content: "";
-  top: 35%;
-  left: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #FFFFFF;
   border-radius: 24px;
-  padding: 24px 20px 32px;
+  padding: 60px 40px 64px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   max-width: 420px;
-  max-height: 420px;
+  width: 100%;
+  max-height: 455px;
   z-index: 15;
 
   &__close {
@@ -82,7 +86,7 @@ import Button from './Button.vue';
     color: #000000;
   }
   &__icon {
-    margin: 0 0 28px;
+    margin: 0 0 35px;
   }
   
   &__close {
@@ -134,6 +138,13 @@ import Button from './Button.vue';
           }
         }
       }
+    }
+  }
+  &__link {
+    width: 100%;
+    &-enter {
+      width: 100%;
+      padding: 16px;
     }
   }
 }
