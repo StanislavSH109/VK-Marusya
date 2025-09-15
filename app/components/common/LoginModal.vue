@@ -1,6 +1,6 @@
 <template>
   <div class="registration">
-    <div class="registration__close" @click="authModal = false">
+    <div class="registration__close" @click="modal = null">
       <IconClose class="registration__close-icon"/>
     </div>
     <form class="form" action="#" @submit.prevent>
@@ -17,7 +17,7 @@
         <NuxtLink class="form__link">
           <Button class="form__link-enter">Войти</Button>
         </NuxtLink>
-        <NuxtLink class="form__exists" to="/">Регистрация</NuxtLink>
+        <NuxtLink class="form__exists" @click="modal = 'register'">Регистрация</NuxtLink>
       </div>
     </form>
   </div>
@@ -30,7 +30,8 @@ import IconPassword from '~/assets/icons/IconPassword.svg';
 import IconClose from '~/assets/icons/IconClose.svg';
 import Button from './Button.vue';
 
-const authModal = useState('authModal', () => false);
+const modal = useModal();
+
 </script>
 
 <style lang="scss" scoped>
@@ -84,6 +85,7 @@ const authModal = useState('authModal', () => false);
     line-height: 24px;
     font-weight: 700;
     color: #000000;
+    cursor: pointer;
   }
   &__icon {
     margin: 0 0 35px;

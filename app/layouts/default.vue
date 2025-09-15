@@ -1,20 +1,25 @@
 <template>
-  <div class="page" :class="{'page--auth': authModal}">
+  <div :class="['page', {'page--auth': modal !== null}]">
     <Header />
       <main>
         <NuxtPage />
       </main>
     <Footer />
-    <LoginModal v-if="authModal"/>
+    <LoginModal v-if="modal === 'login'"/>
+    <RegisterModal v-if="modal === 'register'"/>
+    <RegisterDone v-if="modal === 'done'"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import Header from '~/components/layout/Header.vue';
 import Footer from '~/components/layout/Footer.vue';
+import { useModal } from '~/composables/useModal';
 import LoginModal from '~/components/common/LoginModal.vue';
+import RegisterModal from '~/components/common/RegisterModal.vue';
+import RegisterDone from '~/components/common/RegisterDone.vue';
 
-const authModal = useState('authModal', () => false);
+const modal = useModal();
 </script>
 
 <style lang="scss" scope>

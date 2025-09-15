@@ -32,7 +32,7 @@
         <div class="header__nav-auth">
           <button
           class="header__nav-auth-btn"
-          @click="openAuth" 
+          @click="modal = 'login'" 
           >Войти</button>
         </div>
         <div class="header__mobile">
@@ -66,12 +66,9 @@ import IconMarusya from '~/assets/icons/IconMarusya.svg';
 import IconSearch from '~/assets/icons/IconSearch.svg';
 import IconAuth from '~/assets/icons/IconAuth.svg';
 import IconGenres from '~/assets/icons/IconGenres.svg';
+import { useModal } from '#imports';
 
-const authModal = useState('authModal', () => false);
-
-const openAuth = () => {
-  authModal.value = true;
-}
+const modal = useModal();
 </script>
 
 <style lang="scss" scoped>

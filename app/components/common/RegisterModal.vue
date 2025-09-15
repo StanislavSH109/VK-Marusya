@@ -1,7 +1,7 @@
 <template>
   <div class="registration">
-    <div class="registration__close">
-      <IconClose class="registration__close-icon"/>
+    <div class="registration__close" @click="modal = null">
+      <IconClose class="registration__close-icon" />
     </div>
     <form class="form" action="#" @submit.prevent>
       <IconMarusya class="form__icon" />
@@ -27,8 +27,8 @@
           <input class="form__inner-input" type="password" placeholder="Подтвердите пароль" autocomplete="new-password" required>
           <IconPassword class="form__inner-icon"/>
         </div>
-        <Button>Создать аккаунт</Button>
-        <NuxtLink class="form__exists" to="/">У меня есть пароль</NuxtLink>
+        <Button class="form__create">Создать аккаунт</Button>
+        <NuxtLink class="form__exists" @click="modal = 'login'">У меня есть пароль</NuxtLink>
       </div>
     </form>
   </div>
@@ -41,20 +41,24 @@ import IconName from '~/assets/icons/IconName.svg';
 import IconPassword from '~/assets/icons/IconPassword.svg';
 import IconClose from '~/assets/icons/IconClose.svg';
 import Button from './Button.vue';
-// import { ref } from 'vue';
+import { useModal } from '#imports';
 
-
+const modal = useModal();
 </script>
 
 <style lang="scss" scoped>
 .registration {
+  position: fixed;
+  top: 0;
+  right: 39%;
+  transform: translate(0, 20%);
   background-color: #FFFFFF;
   border-radius: 24px;
   padding: 24px 40px 32px;
   display: flex;
   flex-direction: column;
   max-width: 420px;
-  position: relative;
+  z-index: 15;
 
   &__close {
     position: absolute;
@@ -84,6 +88,13 @@ import Button from './Button.vue';
   display: flex;
   flex-direction: column;
   align-items:center;
+  &__exists {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    color: #000000;
+    cursor: pointer;
+  }
   &__icon {
     margin: 0 0 28px;
   }
@@ -139,6 +150,10 @@ import Button from './Button.vue';
       top: 35%;
       left: 6%;
     }
+  }
+  &__create {
+    width: 100%;
+    padding: 16px;
   }
 }
 </style>
